@@ -7,7 +7,7 @@ $graphResourceId = "00000003-0000-0000-c000-000000000000"
 $permUserRead = "e1fe6dd8-ba31-4d61-89e7-88639da4683d"
 $permUserReadAll = "a154be20-db9c-4678-8ab7-66f6cc099a59"
 $baseUrl = "http://localhost:3000"
-Write-Host "[INFO] Creating Entra ID Appp..."
+Write-Host "[INFO] Creating Entra ID App..."
 
 # 0. Prerequisites check
 try {
