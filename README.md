@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# M365 Starter Kit
 
-## Getting Started
+A production-ready boilerplate for rapid application development within the Microsoft 365 ecosystem. Built on Next.js 16, Better Auth, and Microsoft Graph API.
 
-First, run the development server:
+## Technical Stack
+* **Next.js 16 (App Router)** – High-performance React framework with Server Components support.
+* **Better Auth** – Modern authentication with native Microsoft Entra ID integration.
+* **Fluent UI v9** – Microsoft's official design system for an authentic look and feel.
+* **Prisma ORM** – Configured for SQLite by default (easily swappable for PostgreSQL/SQL Server).
+* **Automated Setup** – PowerShell automation for App Registration and API permission scoping.
 
+## Prerequisites
+* **Node.js 22+**
+* **Azure CLI** (authenticated via `az login`)
+* **M365 Tenant** with Application Developer or Global Admin permissions.
+
+## Quick Start
+
+### 1. Clone and Install
 ```bash
+git clone <repo-url>
+cd m365-starter-kit
+npm install
+```
+### 2. Automated Configuration
+Run the setup script to register the application in Azure, configure Redirect URIs, and generate your .env.local file automatically.
+
+````pwsh
+.\setup-entra.ps1
+````
+
+### 3. Admin Consent
+To enable data fetching from your tenant, administrative consent is required:
+
+Navigate to Azure Portal > App Registrations.
+
+Select your newly created application (default: M365 Management Portal).
+
+Under API Permissions, click "Grant admin consent for [your-tenant]".
+
+### 4. Initialize and Launch
+```bash
+npx prisma db push
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
+- /src/app/api/graph/ – Endpoints for Microsoft Graph API communication.
+- /src/components/m365/ – Pre-built Fluent UI components (e.g., UserTable).
+- /src/lib/auth.ts – Authentication logic and provider configuration.
+- /scripts/ – Infrastructure management and Azure automation scripts.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Scopes
+The following delegated permissions are required by default:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- User.Read – Access to the current user's profile.
+- User.Read.All – Read user data across the entire organization.
+- offline_access – Refresh tokens for long-lived sessions.
