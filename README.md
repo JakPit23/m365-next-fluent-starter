@@ -1,5 +1,7 @@
 # M365 Starter Kit
-![npm version](https://img.shields.io/npm/v/create-m365-app?color=blue)\n
+![npm version](https://img.shields.io/npm/v/create-m365-app?color=blue)
+
+<br/>
 A production-ready boilerplate for rapid application development within the Microsoft 365 ecosystem. Built on Next.js 16, Better Auth, and Microsoft Graph API.
 
 ## Technical Stack
@@ -15,7 +17,7 @@ A production-ready boilerplate for rapid application development within the Micr
 * **M365 Tenant** with Application Developer or Global Admin permissions.
 
 ## Quick Start
-You can scaffold your app quickly using ```bash *npx create-m365-app targetDir* ```
+You can scaffold your app quickly using ```npx create-m365-app targetDir ```
 ### 1. Clone and Install
 ```bash
 git clone https://github.com/JakPit23/m365-next-fluent-starter
