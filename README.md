@@ -18,7 +18,7 @@ A production-ready boilerplate for rapid application development within the Micr
 
 ### 1. Clone and Install
 ```bash
-git clone <repo-url>
+git clone (https://github.com/JakPit23/m365-next-fluent-starter)
 cd m365-starter-kit
 npm install
 ```
